@@ -27,10 +27,13 @@ sqlcmd -S "$SERVER" \
        -v MASTER_KEY_PASSWORD="$MASTER_KEY_PASSWORD" \
           PRIVATE_KEY_PASSWORD="$PRIVATE_KEY_PASSWORD"
 
+
+
 #transfer the certificate files to the secondary server
 read -p "Enter secondary server username: " SECONDARY_USER
 read -p "Enter secondary server hostname: " SECONDARY_SERVER
-scp /var/opt/mssql/data/dbm_certificate.cer $SECONDARY_USER@$SECONDARY_SERVER:~
+scp /var/opt/mssql/data/dbm_certificate.* $SECONDARY_USER@$SECONDARY_SERVER:~
+
 
 
 #create database mirroring endpoint
